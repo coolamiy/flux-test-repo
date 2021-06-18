@@ -11,6 +11,7 @@ func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/", HomeHandler)
 	http.Handle("/", router)
+	http.ListenAndServe(":8080", nil)
 }
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("hello ")
