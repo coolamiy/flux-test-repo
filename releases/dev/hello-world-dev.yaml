@@ -1,0 +1,19 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: dev
+  namespace: coolamiy
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: "semver:*"
+spec:
+  releaseName: dev
+  chart:
+    git: git@github.com:coolamiy/flux-test-repo
+    path: chart
+    ref: main
+  values:
+    replicaCount: 1
+    image:
+      repository: okteto/hello-world
+      tag: golang
